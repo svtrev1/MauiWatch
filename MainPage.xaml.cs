@@ -71,9 +71,6 @@ namespace LastWatch;
             { 1, 1 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 1, 1 }
         };
 
-        static readonly Color colorN = Colors.Black;
-        static readonly Color colorF = Colors.White;
-
         BoxView[,,] BW = new BoxView[6, 7, 5];
 
         public MainPage()
@@ -81,17 +78,17 @@ namespace LastWatch;
             
             InitializeComponent();
 
-            //double h = 200.0 / hDots;
-            //double w = 800.0 / wDots;
-            //double posX = 860.0 / (wDots - 1);
-            //double posY = 200.0 / (hDots - 1);
+            // double h = 200.0 / hDots;
+            // double w = 800.0 / wDots;
+            // double posX = 860.0 / (wDots - 1);
+            // double posY = 200.0 / (hDots - 1);
             
             double h = 50.0 / hDots;
             double w = 300.0 / wDots;
             double posX = 400.0 / (wDots - 1);
             double posY = 70.0 / (hDots - 1);
         
-            double x = 0;
+            double x = -30;
             int number = 0;
             int column = 0;
             int row = 0;
@@ -125,10 +122,14 @@ namespace LastWatch;
 
                         for (row = 0; row <= 6; row++)
                         {
+                            bool isPause = pause[row, column] == 1;
+                            bool IsVP = isPause ? IsVisible : !IsVisible;
                             BoxView boxView = new BoxView
                             {
-                                Color = pause[row, column] == 1 ?
-                                    colorN : colorF
+                                IsVisible = IsVP,
+                                Color = Colors.Brown
+                                //Color = pause[row, column] == 1 ?
+                                //    colorN : colorF
                             };
                             absoluteLayout.Children.Add(boxView);
                             absoluteLayout.SetLayoutBounds(boxView,
@@ -182,8 +183,10 @@ namespace LastWatch;
                 for (column = 0; column <= 4; column++)
                 {
                     bool isOn = numbers[number, row, column] == 1;
-                    Color color = isOn ? colorN : colorF;
-                    BW[item, row, column].Color = color;
+                    //Color color = isOn ? colorN : colorF;
+                    //BW[item, row, column].Color = color;
+                    bool isV = isOn ? IsVisible : !IsVisible;
+                    BW[item, row, column].IsVisible = isV;
                 }
             }
         }

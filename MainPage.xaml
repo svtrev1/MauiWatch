@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LastWatch.MainPage"
-             SizeChanged="Size">
+             SizeChanged="Size"
+             BackgroundColor="Gold">
              
 
     <AbsoluteLayout x:Name="absoluteLayout"
                     LayoutFlags="PositionProportional, SizeProportional"
                     VerticalOptions="Center"
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Center" >
         
         </AbsoluteLayout>
 </ContentPage>
